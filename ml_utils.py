@@ -1,9 +1,9 @@
 
-import lightgbm as lgb
 import logging
 import os
 from dotenv import load_dotenv
 import pickle
+import pandas as pd
 
 # Load the environment variables from the .env file
 load_dotenv()
@@ -17,10 +17,6 @@ def load_ranking_model():
         if model_path is None:
             logging.error("MODEL_PATH environment variable is not set.")
             return None
-        #model = lgb.Booster(model_file=model_path)
-        
-
-
         # Load the model using pickle
         with open(model_path, 'rb') as f:
             model = pickle.load(f)
@@ -29,9 +25,6 @@ def load_ranking_model():
     except Exception as e:
         logging.error(f"An error occurred while loading the model: {e}")
         return None
-    
-import pandas as pd
-from pandas import json_normalize
 
 def json_to_df(data):
     """
