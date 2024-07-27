@@ -16,6 +16,7 @@ COPY . /usr/src/app
 RUN apt-get update && apt-get install -y \
     libgomp1 \
     && rm -rf /var/lib/apt/lists/*
+
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
